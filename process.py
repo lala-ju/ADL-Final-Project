@@ -3,6 +3,8 @@ import json
 from tqdm import tqdm
 from opencc import OpenCC
 
+import uuid
+
 def parse_args():
     args = argparse.ArgumentParser()
     args.add_argument("--input", type=str, required=True, help="input file")
@@ -62,9 +64,11 @@ def main():
         for d in processed_data:
             if int(d["error_flag"]):
                 ans = d["corrected_sentence"][0]
+                for ans in d["corrected_sentence"]:
+                    formatted_data.append({"id": uuid.uuid4().hex, "instruction": gen_prompt(d["sentence"]), "output": ans})
             else:
                 ans = d["sentence"]
-            formatted_data.append({"id": d["uid"], "instruction": gen_prompt(d["sentence"]), "output": ans})
+                formatted_data.append({"id": uuid.uuid4().hex, "instruction": gen_prompt(d["sentence"]), "output": ans})
         with open(args.output, "w+") as f:
             json.dump(formatted_data, f, indent=4, ensure_ascii=False)
     else:    
