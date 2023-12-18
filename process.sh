@@ -1,0 +1,2 @@
+python3 process.py --input ./data/FCGEC_train.json --output ./processed_data/FCGEC_train.json
+python3 process.py --input ./data/FCGEC_train.json --output ./processed_data/FCGEC_train_tw_llm.json --format tw_llm

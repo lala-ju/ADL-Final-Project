@@ -1,0 +1,1 @@
+wget https://github.com/xlxwalex/FCGEC/raw/main/data/FCGEC_train.json -P ./data/
