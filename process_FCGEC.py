@@ -59,7 +59,7 @@ def apply_operation(sentence, operation):
 def main():
     args = parse_args()
     cc = OpenCC('s2tw')
-    random.seed(42069)
+    random.seed(69420)
 
     with open(args.input, "r") as f:
         data = json.load(f)
