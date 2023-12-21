@@ -11,7 +11,7 @@ def parse_args():
     args.add_argument("--output", type=str, required=True, help="output file")
     args.add_argument("--format", type=str, default=None, help="format")
     args.add_argument("--test", action="store_true")
-    args.add_argument("--no_prompt", action="store_true")
+    args.add_argument("--valid", action="store_true")
     return args.parse_args()
 
 def apply_operation(sentence, operation):
@@ -66,33 +66,7 @@ def main():
     processed_data = []
     # {"uid": uid, "sentence": sentence, "error_flag": error_flag, "error_type": error_type, "operation": operation, "corrected_sentence": corrected_sentence}
     
-    if not args.test:
-        for uid, prob in tqdm(data.items()):
-            corrected_sentence = apply_operation(prob["sentence"], prob["operation"])
-            processed_data.append({"uid": uid, "sentence": cc.convert(prob["sentence"]), "error_flag": prob["error_flag"], "corrected_sentence": list(map(cc.convert, corrected_sentence))})
-
-
-        if args.format == "tw_llm":
-            def gen_prompt(s):
-                if args.no_prompt:
-                    return s
-                return f"你是人工智慧助理，以下是用戶和人工智能助理之間的對話。你要對用戶的問題提供有用、安全、詳細和禮貌的回答。USER: 請修正文法錯誤：{s} ASSISTANT:"
-
-            formatted_data = []
-            for d in processed_data:
-                if int(d["error_flag"]):
-                    ans = d["corrected_sentence"][0]
-                    for ans in d["corrected_sentence"]:
-                        formatted_data.append({"id": uuid.uuid4().hex, "instruction": gen_prompt(d["sentence"]), "output": ans})
-                else:
-                    ans = d["sentence"]
-                    formatted_data.append({"id": uuid.uuid4().hex, "instruction": gen_prompt(d["sentence"]), "output": ans})
-            with open(args.output, "w+") as f:
-                json.dump(formatted_data, f, indent=4, ensure_ascii=False)
-        else:    
-            with open(args.output, "w+") as f:
-                json.dump(processed_data, f, indent=4, ensure_ascii=False)
-    else:
+    if args.test:
         for uid, prob in tqdm(data.items()):
             processed_data.append({"uid": uid, "sentence": cc.convert(prob["sentence"])})
             
@@ -106,6 +80,41 @@ def main():
         else:    
             with open(args.output, "w+") as f:
                 json.dump(processed_data, f, indent=4, ensure_ascii=False)
+    else:
+        for uid, prob in tqdm(data.items()):
+            corrected_sentence = apply_operation(prob["sentence"], prob["operation"])
+            processed_data.append({"uid": uid, "sentence": cc.convert(prob["sentence"]), "error_flag": prob["error_flag"], "corrected_sentence": list(map(cc.convert, corrected_sentence))})
+            
+        if args.valid:
+            if args.format == "tw_llm":
+                formatted_data = []
+                for d in processed_data:
+                    if int(d["error_flag"]):
+                        formatted_data.append({"id": uuid.uuid4().hex, "instruction": d["sentence"], "output": d["corrected_sentence"]})
+                    else:
+                        formatted_data.append({"id": uuid.uuid4().hex, "instruction": d["sentence"], "output": [d["sentence"]]})
+                with open(args.output, "w+") as f:
+                    json.dump(formatted_data, f, indent=4, ensure_ascii=False)
+            else:    
+                with open(args.output, "w+") as f:
+                    json.dump(processed_data, f, indent=4, ensure_ascii=False)
+        else:
+            if args.format == "tw_llm":
+                def gen_prompt(s):
+                    return f"你是人工智慧助理，以下是用戶和人工智能助理之間的對話。你要對用戶的問題提供有用、安全、詳細和禮貌的回答。USER: 請修正文法錯誤：{s} ASSISTANT:"
+
+                formatted_data = []
+                for d in processed_data:
+                    if int(d["error_flag"]):
+                        for ans in d["corrected_sentence"]:
+                            formatted_data.append({"id": uuid.uuid4().hex, "instruction": gen_prompt(d["sentence"]), "output": ans})
+                    else:
+                        formatted_data.append({"id": uuid.uuid4().hex, "instruction": gen_prompt(d["sentence"]), "output": d["sentence"]})
+                with open(args.output, "w+") as f:
+                    json.dump(formatted_data, f, indent=4, ensure_ascii=False)
+            else:    
+                with open(args.output, "w+") as f:
+                    json.dump(processed_data, f, indent=4, ensure_ascii=False)
     
 if __name__ == "__main__":
     main()
