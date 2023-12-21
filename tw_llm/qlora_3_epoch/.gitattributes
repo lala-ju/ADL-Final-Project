@@ -1,0 +1,11 @@
+config.json filter=lfs diff=lfs merge=lfs -text
+README.md filter=lfs diff=lfs merge=lfs -text
+special_tokens_map.json filter=lfs diff=lfs merge=lfs -text
+tokenizer.model filter=lfs diff=lfs merge=lfs -text
+adapter_config.json filter=lfs diff=lfs merge=lfs -text
+added_tokens.json filter=lfs diff=lfs merge=lfs -text
+checkpoint-4052 filter=lfs diff=lfs merge=lfs -text
+tokenizer_config.json filter=lfs diff=lfs merge=lfs -text
+adapter_model.bin filter=lfs diff=lfs merge=lfs -text
+checkpoint-11907 filter=lfs diff=lfs merge=lfs -text
+checkpoint-8099 filter=lfs diff=lfs merge=lfs -text

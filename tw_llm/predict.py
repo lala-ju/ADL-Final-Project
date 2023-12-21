@@ -89,10 +89,13 @@ def main():
     def gen_prompt(s):
         return f"你是人工智慧助理，以下是用戶和人工智能助理之間的對話。你要對用戶的問題提供有用、安全、詳細和禮貌的回答。USER: 請修正文法錯誤：{s} ASSISTANT:"
     res = []
+    
+    gen_args = {"num_beams": 10}
+    
     for d in tqdm(data):
         instruction = gen_prompt(d["instruction"])
         tokenized = tokenizer(instruction, add_special_tokens=False, return_tensors = "pt")
-        generate_ids = model.generate(input_ids=tokenized["input_ids"].to("cuda"))
+        generate_ids = model.generate(input_ids=tokenized["input_ids"].to("cuda"), **gen_args)
         decoded_pred = tokenizer.batch_decode(generate_ids, skip_special_tokens = False,clean_up_tokenization_spaces=False)[0]
         output = decoded_pred.split("ASSISTANT:")[-1][:-4].replace(" ", "").replace("<s>", "")
         if (args.verbose):

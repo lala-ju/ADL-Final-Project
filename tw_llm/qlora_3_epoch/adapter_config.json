@@ -1,28 +1,3 @@
-{
-  "alpha_pattern": {},
-  "auto_mapping": null,
-  "base_model_name_or_path": "../Taiwan-LLM-7B-v2.0-chat",
-  "bias": "none",
-  "fan_in_fan_out": null,
-  "inference_mode": false,
-  "init_lora_weights": true,
-  "layers_pattern": null,
-  "layers_to_transform": null,
-  "lora_alpha": 32,
-  "lora_dropout": 0.1,
-  "modules_to_save": null,
-  "peft_type": "LORA",
-  "r": 16,
-  "rank_pattern": {},
-  "revision": null,
-  "target_modules": [
-    "v_proj",
-    "q_proj",
-    "o_proj",
-    "k_proj",
-    "gate_proj",
-    "down_proj",
-    "up_proj"
-  ],
-  "task_type": "CAUSAL_LM"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7bb6adb50cc199925ff864fb699b2c87115e4f44e21ecf51d4d5a7657f545598
+size 569
