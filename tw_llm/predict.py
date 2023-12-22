@@ -140,7 +140,7 @@ def main():
     valid_dataloader = DataLoader(valid_dataset, collate_fn=data_collator, batch_size=args.per_device_eval_batch_size, shuffle=False)
     
     def postprocess_text(preds):
-        preds = [re.sub(r".*ASSISTANT:", "", pred) for pred in preds]
+        preds = [re.sub(r".*ASSISTANT:.", "", pred) for pred in preds]
         return preds
 
 

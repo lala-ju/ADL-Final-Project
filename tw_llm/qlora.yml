@@ -4,10 +4,10 @@ tokenizer_type: CodeLlamaTokenizer
 is_llama_derived_model: true
 
 datasets:
-  - path: ../processed_data/FCGEC_train_tw_llm.json
+  - path: ../processed_data/NLPCC2018_train_tw_llm.json
     type: alpaca
     train_on_split: train
-output_dir: ./qlora_3_epoch
+output_dir: ./qlora_NLPCC
 val_set_size: 0
 
 adapter: qlora
