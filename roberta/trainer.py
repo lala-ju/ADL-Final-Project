@@ -459,10 +459,10 @@ def main():
         inputs = examples[text_column]
         targets = examples[summary_column]
         inputs = [prefix + inp for inp in inputs]
-        model_inputs = tokenizer(inputs, max_length=args.max_source_length, padding=padding, truncation=True, return_tensors="pt")
+        model_inputs = tokenizer(inputs, max_length=args.max_source_length, padding=padding, truncation=True)
 
         # Tokenize targets with the `text_target` keyword argument
-        labels = tokenizer(text_target=targets, max_length=max_target_length, padding=padding, truncation=True, return_tensors="pt")
+        labels = tokenizer(text_target=targets, max_length=max_target_length, padding=padding, truncation=True)
 
         # If we are padding here, replace all tokenizer.pad_token_id in the labels by -100 when we want to ignore
         # padding in the loss.
@@ -563,9 +563,6 @@ def main():
         # TensorBoard cannot log Enums, need the raw value
         experiment_config["lr_scheduler_type"] = experiment_config["lr_scheduler_type"].value
         accelerator.init_trackers("summarization_no_trainer", experiment_config)
-
-    # Metric
-    metric = evaluate.load("rouge")
 
     # Train!
     total_batch_size = args.per_device_train_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
