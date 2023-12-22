@@ -4,6 +4,7 @@ CUDA_VISIBLE_DEVICES=${1} python3 trainer.py \
     --train_file ../processed_data/NLPCC2018_train.json \
     --max_source_length 512 \
     --model_name_or_path fnlp/bart-base-chinese \
+    --use_slow_tokenizer \
     --text_column instruction \
     --summary_column output \
     --per_device_train_batch_size 2 \
