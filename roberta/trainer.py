@@ -47,6 +47,7 @@ from transformers import (
     AutoConfig,
     AutoModelForSeq2SeqLM,
     AutoTokenizer,
+    BartTokenizer,
     DataCollatorForSeq2Seq,
     SchedulerType,
     get_scheduler,
@@ -391,11 +392,11 @@ def main():
         logger.warning("You are instantiating a new config instance from scratch.")
 
     if args.tokenizer_name:
-        tokenizer = AutoTokenizer.from_pretrained(
+        tokenizer = BartTokenizer.from_pretrained(
             args.tokenizer_name, use_fast=not args.use_slow_tokenizer, trust_remote_code=args.trust_remote_code
         )
     elif args.model_name_or_path:
-        tokenizer = AutoTokenizer.from_pretrained(
+        tokenizer = BartTokenizer.from_pretrained(
             args.model_name_or_path, use_fast=not args.use_slow_tokenizer, trust_remote_code=args.trust_remote_code
         )
     else:
