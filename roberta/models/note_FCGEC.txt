@@ -1,7 +1,7 @@
 python3 trainer.py \
     --train_file ../processed_data/FCGEC_train.json \
     --max_source_length 512 \
-    --model_name_or_path hfl/chinese-roberta-wwm-ext \
+    --model_name_or_path fnlp/bart-base-chinese \
     --text_column instruction \
     --summary_column output \
     --per_device_train_batch_size 2 \
