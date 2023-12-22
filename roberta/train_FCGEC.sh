@@ -4,6 +4,7 @@ CUDA_VISIBLE_DEVICES=${1} python3 trainer.py \
     --train_file ../processed_data/FCGEC_train.json \
     --max_source_length 512 \
     --model_name_or_path fnlp/bart-base-chinese \
+    --tokenizer_name hfl/chinese-roberta-wwm-ext \
     --use_slow_tokenizer \
     --text_column instruction \
     --summary_column output \
