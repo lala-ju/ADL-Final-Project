@@ -1,3 +1,4 @@
+import gc
 import torch
 import numpy as np
 from tqdm import tqdm
@@ -72,7 +73,7 @@ def main():
             torch_dtype=torch.bfloat16,
             quantization_config=bnb_config
         )
-        tokenizer = AutoTokenizer.from_pretrained(args.base_model_path)
+        tokenizer = AutoTokenizer.from_pretrained(args.base_model_path, padding_side='left')
     else:
         model_name = "yentinglin/Taiwan-LLM-7B-v2.0-chat"
         revision = "5073b2bbc1aa5519acdc865e99832857ef47f7c9"
@@ -85,6 +86,7 @@ def main():
         tokenizer = AutoTokenizer.from_pretrained(
             model_name,
             revision=revision,
+            padding_side='left'
         )
 
     if tokenizer.pad_token_id is None:
@@ -151,7 +153,7 @@ def main():
     model.eval()
     model = model.merge_and_unload()
 
-    gen_kwargs = {"num_beams": args.num_beams}
+    gen_kwargs = {"num_beams": args.num_beams, "do_sample": False}
     
     f = open(args.output_file, "w+")
     for batch in tqdm(valid_dataloader):
@@ -176,6 +178,9 @@ def main():
             for p in decoded_preds:
                 f.write('{"id": "' + next(ids_iter) + '", "output": "' + p.replace("\n", "") + '"}\n')
                 f.flush()
+
+            torch.cuda.empty_cache()
+            gc.collect()
             
     
     # for d in tqdm(data):
