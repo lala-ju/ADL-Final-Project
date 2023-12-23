@@ -1,0 +1,129 @@
+{
+    "os": "Linux-6.2.0-39-generic-x86_64-with-glibc2.35",
+    "python": "3.10.13",
+    "heartbeatAt": "2023-12-22T12:42:39.062168",
+    "startedAt": "2023-12-22T12:42:38.360362",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "qlora.yml"
+    ],
+    "state": "running",
+    "program": "-m axolotl.cli.train",
+    "codePathLocal": null,
+    "git": {
+        "remote": "git@github.com:LH104729/112-1-CSIE5413-ADL-Final-Project.git",
+        "commit": "4e4605067c45f4c52b15a21674cb97d94a362506"
+    },
+    "email": "lh104729@gmail.com",
+    "root": "/home/lh104729/112-1-CSIE5413-ADL-Final-Project",
+    "host": "lucario",
+    "username": "lh104729",
+    "executable": "/home/lh104729/miniconda3/envs/ADL_Final/bin/python",
+    "cpu_count": 10,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3267.1423124999997,
+        "min": 800.0,
+        "max": 4275.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4314.179,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4348.792,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3975.949,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4397.567,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4410.318,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4230.733,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3299.164,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 2500.0,
+            "min": 800.0,
+            "max": 3300.0
+        },
+        {
+            "current": 3297.575,
+            "min": 800.0,
+            "max": 3300.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 93.31179428100586,
+            "used": 48.18359375
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4060 Ti",
+            "memory_total": 17175674880
+        }
+    ],
+    "memory": {
+        "total": 46.78675079345703
+    }
+}
