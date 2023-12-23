@@ -3,7 +3,7 @@
 epochnum=48
 mkdir pd_NLPCC
 
-for((i=0;i<${epochnum};i++))
+for((i=0;i<${epochnum};i+=2))
 do
     echo ${i}
     cp -f ./models/model_NLPCC01/config.json ./models/model_NLPCC01/tokenizer.json ./models/model_NLPCC01/tokenizer_config.json ./models/model_NLPCC01/epoch_${i}
