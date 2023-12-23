@@ -74,7 +74,7 @@ def main():
             
         formatted_data = []
         for d in processed_data:
-            formatted_data.append({"id": uuid.UUID(bytes = random.randbytes(16), version=4).hex, "instruction": d["sentence"]})
+            formatted_data.append({"id": uid, "instruction": d["sentence"]})
         with open(args.output, "w+") as f:
             json.dump(formatted_data[:args.max_data], f, indent=4, ensure_ascii=False)
     else:

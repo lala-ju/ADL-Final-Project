@@ -3,4 +3,4 @@ python3 process_FCGEC.py --input ./data/FCGEC_train.json --output ./processed_da
 
 python3 process_FCGEC.py --input ./data/FCGEC_valid.json --output ./processed_data/FCGEC_valid.json --valid
 
-python3 process_FCGEC.py --input ./data/FCGEC_test.json --output ./processed_data/FCGEC_test_tw_llm.json --format tw_llm --test
+python3 process_FCGEC.py --input ./data/FCGEC_test.json --output ./processed_data/FCGEC_test.json --format tw_llm --test
