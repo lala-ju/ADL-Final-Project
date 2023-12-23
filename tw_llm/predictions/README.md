@@ -1,0 +1,9 @@
+- output_valid_FCGEC_all_data_greedy.jsonl:
+    - Model: qlora_3_epoch
+    - Data: FCGEC
+- output_valid_FCGEC_beam_4.jsonl:
+    - Model: qlora_FCGEC
+    - Data: FCGEC (Only completed the first 850 data)
+- output_valid_NLPCC_beam_4.jsonl:
+    - Model: qlora_NLPCC
+    - Data: NLPCC
