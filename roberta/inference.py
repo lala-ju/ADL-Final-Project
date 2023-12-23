@@ -33,7 +33,7 @@ def main():
     column_names = raw_datasets["validation"].column_names
     prefix = ""
     def preprocess_function(examples): # without label
-        inputs = [prefix + doc for doc in examples["maintext"]]
+        inputs = [prefix + doc for doc in examples["instruction"]]
         model_inputs = tokenizer(inputs, max_length=int(args.max_src_len), truncation=True)
         return model_inputs
     
