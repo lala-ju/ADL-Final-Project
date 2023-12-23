@@ -57,7 +57,7 @@ def main():
         with torch.no_grad():
             generated_tokens = accelerator.unwrap_model(model).generate(
                 batch["input_ids"],
-                max_length=512,
+                max_length=128,
                 do_sample=False,
                 num_beams=4,
                 attention_mask=batch["attention_mask"]
