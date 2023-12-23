@@ -37,7 +37,7 @@ def main():
         else:
             if p["output"] == a["instruction"]:
                 false_positve += 1
-            for ans in a:
+            for ans in a["output"]:
                 if p["output"] == ans:
                     exact_match += 1
                     true_negative += 1
