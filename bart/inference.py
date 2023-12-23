@@ -36,8 +36,8 @@ def main():
         result.append(temp)
         progress.update(1)
 
-    with open(args.output, 'w') as f:
-        json.dump(result, f)
+    with open(args.output, 'w', encoding='utf8') as f:
+        json.dump(result, f, ensure_ascii=False)
     
 
 if __name__ == "__main__":
