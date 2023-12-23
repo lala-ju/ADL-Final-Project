@@ -34,7 +34,7 @@ def main():
     prefix = ""
     def preprocess_function(examples): # without label
         inputs = [prefix + doc for doc in examples["instruction"]]
-        model_inputs = tokenizer(inputs, max_length=int(args.max_src_len), truncation=True)
+        model_inputs = tokenizer(inputs, max_length=512, truncation=True)
         return model_inputs
     
     with accelerator.main_process_first():
