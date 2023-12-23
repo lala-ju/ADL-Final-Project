@@ -18,9 +18,12 @@ def main():
 
     for obj in inputs:
         s = str(obj['id']) + '\t' + obj['instruction']
-        for ans in obj["output"]:
-            s = s + "\t" + ans
-        s = s + "\n"
+        if isinstance(obj["output"], list):
+            for ans in obj["output"]:
+                s = s + "\t" + ans
+            s = s + "\n"
+        else:
+            s = s + "\t" + obj["output"] + "\n"
         outputs.append(s)
 
     with open(args.outfile, 'w') as f:
