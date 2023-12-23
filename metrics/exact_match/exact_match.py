@@ -49,9 +49,8 @@ def main():
         total += 1
         
     print(f"Exact Match = {exact_match} / {total} = {exact_match / total}")
-    print(f"Grammatically correct = {true_positive} / {total_positive}")
-    print(f"Grammatically incorrect = {true_negative} / {total_negative}")
-    print(f"Uncorrected = {false_positve}")
+    print(f"Grammatically correct = {true_positive} / {total_positive} = {true_positive/total_positive}")
+    print(f"Grammatically incorrect = {true_negative} / {total_negative} = {true_negative/total_negative}, Uncorrected = {false_positve}")
     
 if __name__ == "__main__":
     main()
