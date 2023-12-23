@@ -1,4 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from tqdm import tqdm
 import argparse
 import torch
 import json
@@ -24,6 +25,8 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForSeq2SeqLM.from_pretrained(args.model).to(device)
 
+    progress = tqdm(list(range(len(all_data))))
+
     result = []
     for data in all_data:
         temp = {"id": data["id"]}
@@ -31,6 +34,7 @@ def main():
         outputs = model.generate(inputs, max_new_tokens=100, num_beams=4, do_sample=False)
         temp["output"] = tokenizer.decode(outputs[0], skip_special_tokens=True)
         result.append(temp)
+        progress.update(1)
 
     with open(args.output, 'w') as f:
         json.dump(result, f)
