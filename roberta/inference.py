@@ -31,8 +31,8 @@ def main():
     for data in all_data:
         temp = {"id": data["id"]}
         inputs = tokenizer(data["instruction"], return_tensors="pt").to(device).input_ids
-        outputs = model.generate(inputs, max_new_tokens=100, num_beams=4, do_sample=False)
-        temp["output"] = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        outputs = model.generate(inputs, max_new_tokens=100, num_beams=4, do_sample=False).to(device)
+        temp["output"] = tokenizer.decode(outputs[0], skip_special_tokens=True).to(device)
         result.append(temp)
         progress.update(1)
 
