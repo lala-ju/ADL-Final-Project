@@ -33,7 +33,7 @@ def main():
         temp = {"id": data["id"]}
         m2_temp = {"id": data["id"], "instruction": data["instruction"]}
         inputs = tokenizer(data["instruction"], return_tensors="pt").to(device).input_ids
-        outputs = model.generate(inputs, num_beams=4, do_sample=False).to(device)
+        outputs = model.generate(inputs, max_length=128, num_beams=4, do_sample=False).to(device)
         temp["output"] = tokenizer.decode(outputs[0], skip_special_tokens=True)
         m2_temp["output"] = [temp["output"]]
         result.append(temp)
