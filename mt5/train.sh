@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=0 python3 train.py \
+    --model_name_or_path google/mt5-small \
+    --train_file ./data/NLPCC2018_train.json \
+    --source_prefix "修正錯誤： " \
+    --text_column instruction \
+    --result_column output \
+    --output_dir ./NLPCC/ \
+    --per_device_train_batch_size 2 \
+    --learning_rate 1e-4 \
+    --max_source_length 512 \
+    --max_target_length 512 \
+    --num_beams 5 \
+    --gradient_accumulation_step 2 \
+    --num_train_epochs 15 \
+    --num_warmup_steps 300 \
+    --seed 42 \
+    --with_tracking \
+    --report_to wandb
