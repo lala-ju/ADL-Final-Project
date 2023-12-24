@@ -11,6 +11,8 @@
 # done
 
 
-
-model=${2}
-CUDA_VISIBLE_DEVICES=${1} python3 inference.py --cuda ${1} --model ${model} --data ../processed_data/FCGEC_valid.json --output ${3}
+CUDA_VISIBLE_DEVICES=${1} python3 inference.py --model ${2} \
+    --input ../processed_data/FCGEC_valid.json \
+    --output ${3} \
+    --max_src_len 256 \
+    --batch ${4}
