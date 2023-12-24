@@ -37,7 +37,7 @@ def main():
         progress.update(1)
 
     with open(args.output, 'w', encoding='utf8') as f:
-        json.dump(result, f, ensure_ascii=False)
+        json.dump(result, f, ensure_ascii=False, indent=4)
     
 
 if __name__ == "__main__":

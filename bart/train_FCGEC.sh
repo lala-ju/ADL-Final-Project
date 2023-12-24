@@ -10,6 +10,5 @@ CUDA_VISIBLE_DEVICES=${1} python3 trainer.py \
     --per_device_train_batch_size 4 \
     --gradient_accumulation_steps 1 \
     --learning_rate 1e-4 \
-    --num_train_epochs 16 \
-    --checkpointing_steps epoch \
-    --output_dir models/model_FCGEC02
+    --num_train_epochs 24 \
+    --output_dir models/model_FCGEC03
