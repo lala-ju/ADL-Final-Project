@@ -33,7 +33,7 @@ def apply_operation(sentence, operation):
                     labels = [labels]
                 n_sentences = []
                 for label in labels:
-                    n_sentences += [s[:int(op_ins["pos"])] + label + s[int(op_ins["pos"]):] for s in sentences]
+                    n_sentences += [s[:int(op_ins["pos"])+1] + label + s[int(op_ins["pos"])+1:] for s in sentences]
                 sentences = n_sentences
             elif op_type == "Modify":
                 op_ins = op_ins[0]
