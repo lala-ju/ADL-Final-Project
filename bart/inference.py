@@ -80,9 +80,9 @@ def main():
                 m2_all_result.append(m2_result)
             progress_bar.update(1)
 
-    with open(args.output, 'w', encoding='utf8') as f:
+    with open(f"pd/{args.output}", 'w', encoding='utf8') as f:
         json.dump(all_result, f, ensure_ascii=False, indent=4)
-    with open(f"m2_{args.output}", 'w', encoding='utf8') as f:
+    with open(f"pd/m2_{args.output}", 'w', encoding='utf8') as f:
         json.dump(m2_all_result, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
