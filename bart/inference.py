@@ -28,16 +28,22 @@ def main():
     progress = tqdm(list(range(len(all_data))))
 
     result = []
+    m2_result = []
     for data in all_data:
         temp = {"id": data["id"]}
+        m2_temp = {"id": data["id"], "instruction": data["instruction"]}
         inputs = tokenizer(data["instruction"], return_tensors="pt").to(device).input_ids
-        outputs = model.generate(inputs, max_new_tokens=100, num_beams=4, do_sample=False).to(device)
+        outputs = model.generate(inputs, num_beams=4, do_sample=False).to(device)
         temp["output"] = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        m2_temp["output"] = [temp["output"]]
         result.append(temp)
+        m2_result.append(m2_temp)
         progress.update(1)
 
     with open(args.output, 'w', encoding='utf8') as f:
         json.dump(result, f, ensure_ascii=False, indent=4)
+    with open(f"m2_{args.output}", 'w', encoding='utf8') as f:
+        json.dump(m2_result, f, ensure_ascii=False, indent=4)
     
 
 if __name__ == "__main__":
