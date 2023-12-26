@@ -1,11 +1,11 @@
 CUDA_VISIBLE_DEVICES=0 python predict.py \
     --model_name_or_path FCGEC_10000 \
-    --test_file ./data/FCGEC_valid.json \
+    --test_file $1 \
     --max_source_length 512 \
     --max_target_length 512 \
     --source_prefix "修正錯誤： "\
-    --text_column instruction \
+    --text_column $2 \
     --trust_remote_code True\
     --output_dir ./prediction\
-    --output_file FCGEC_10000.json \
+    --output_file $3 \
     --beam 5\

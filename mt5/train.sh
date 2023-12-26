@@ -1,9 +1,9 @@
 CUDA_VISIBLE_DEVICES=0 python3 train.py \
     --model_name_or_path google/mt5-small \
-    --train_file ./data/NLPCC2018_train.json \
+    --train_file $1 \
     --source_prefix "修正錯誤： " \
-    --text_column instruction \
-    --result_column output \
+    --text_column $2 \
+    --result_column $3 \
     --output_dir ./NLPCC/ \
     --per_device_train_batch_size 2 \
     --learning_rate 1e-4 \
