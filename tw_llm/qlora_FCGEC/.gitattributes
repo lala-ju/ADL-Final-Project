@@ -1,2 +1,0 @@
-adapter_model.bin filter=lfs diff=lfs merge=lfs -text
-tokenizer.model filter=lfs diff=lfs merge=lfs -text

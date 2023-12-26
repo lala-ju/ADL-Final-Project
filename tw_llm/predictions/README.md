@@ -14,7 +14,18 @@
         - F0.5: 0.4195
 - output_valid_FCGEC_beam_4.jsonl:
     - Model: qlora_FCGEC
-    - Data: FCGEC (Only completed the first 850 data)
+    - Data: FCGEC
+    - Exact Match Score:
+        - Exact Match = 895 / 2000 = 0.4475
+        - Grammatically correct = 881 / 899 = 0.9800
+        - Grammatically incorrect = 14 / 1101 = 0.0127, Uncorrected = 1061
+    - M2 Score:
+        - TP: 44
+        - FP: 50
+        - FN: 1273
+        - Precision: 0.4681
+        - Recall: 0.0334
+        - F0.5: 0.1299
 - output_valid_NLPCC_beam_4.jsonl:
     - Model: qlora_NLPCC
     - Data: NLPCC
