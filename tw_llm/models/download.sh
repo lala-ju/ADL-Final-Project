@@ -1,3 +1,6 @@
+gdown https://drive.google.com/uc?id=1G7Q59QBrY6dUfhVwwxZQWkVdg7i53uAN
+unzip model_FCGEC.zip
+
 gdown https://drive.google.com/uc?id=1OL1bpnmwtIOxNHDqBxMrxp1nJ1WL_HkY
 unzip model_FCGEC_all.zip
 
