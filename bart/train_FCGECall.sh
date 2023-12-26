@@ -11,4 +11,6 @@ CUDA_VISIBLE_DEVICES=${1} python3 trainer.py \
     --gradient_accumulation_steps 1 \
     --learning_rate 1e-4 \
     --num_train_epochs 24 \
-    --output_dir models/model_FCGECall03
+    --output_dir models/model_FCGECall04 \
+    --with_tracking \
+    --report_to wandb
