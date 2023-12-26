@@ -646,6 +646,14 @@ def main():
             if completed_steps >= args.max_train_steps:
                 break
 
+        if args.with_tracking:
+            result = {}
+            result["train_loss"] = total_loss.item() / len(train_dataloader)
+            result["epoch"] = epoch
+            result["step"] = completed_steps
+            logger.info(result)
+            accelerator.log(result, step=completed_steps)
+
         if args.checkpointing_steps == "epoch":
             output_dir = f"epoch_{epoch}"
             if args.output_dir is not None:
