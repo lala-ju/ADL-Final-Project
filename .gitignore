@@ -4,3 +4,8 @@ checkpoint*/
 __pycache__/
 roberta/models/model*
 bart/models/model*
+tw_llm/models/model*
+old
+wandb
+last_run_prepared
+qlora*/
