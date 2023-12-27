@@ -1,9 +1,9 @@
 # Train
 ```
-bash train_FCGEC.sh <GPU index you want>
-bash train_FCGECall.sh <GPU index you want>
-bash train_NLPCC.sh <GPU index you want>
-bash train_NLPCCall.sh <GPU index you want>
+bash train_FCGEC.sh <GPU index you want>    //training model on the 10000 datas based on FCGEC dataset
+bash train_FCGECall.sh <GPU index you want> //training model on all the datas in the FCGEC dataset
+bash train_NLPCC.sh <GPU index you want>    //training model on the 10000 datas based on NLPCC dataset
+bash train_NLPCCall.sh <GPU index you want> //training model on all the datas in the NLPCC dataset
 ```
 
 # Model download
